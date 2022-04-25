@@ -32,7 +32,6 @@ class MainWin(QWidget):
     # действия кнопки
     def next_click(self):
         self.hide()
-        
         self.tw = TestWin()
 
 app = QApplication([])

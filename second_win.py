@@ -2,6 +2,14 @@ from PyQt5.QtCore import Qt, QTimer, QTime
 from PyQt5.QtWidgets import QWidget,QLabel,QPushButton,QVBoxLayout,QApplication,QLineEdit,QHBoxLayout
 from instr import *
 from PyQt5.QtGui import QFont
+from final_win import *
+class Experiment():
+    def __init__(self,age,test1,test2,test3):
+        self.age = age
+        self.test1 = test1
+        self.test2 = test2
+        self.test3 = test3
+        
 
 class TestWin(QWidget):
     def __init__(self):
@@ -85,7 +93,65 @@ class TestWin(QWidget):
 
     def next_click(self):
         self.hide()
-        self.fw = FinalWin()
+        self.exp = Experiment(int(self.age_le.text()),self.test1_le.text(),self.test2_le.text(),self.test3_le.text())
+        self.index = (4*(int(self.exp.test1)+int(self.exp.test2)+int(self.exp.test3))-200)/10
+        self.fw = FinalWin(self.index,self.result())
+    def result(self):
+        if self.exp.age >= 15:
+            if self.index >= 15:
+                return txt_res1
+            elif 11<=self.index<=14.9:
+                return txt_res2
+            elif 6<=self.index<=10.9:
+                return txt_res3
+            elif 0.5<=self.index<=5.9:
+                return txt_res4
+            elif self.index<=0.4:
+                return txt_res5
+        elif 14>=self.exp.age >= 13:
+            if self.index >= 16.5:
+                return txt_res1
+            elif 12.5<=self.index<=16.4:
+                return txt_res2
+            elif 7.5<=self.index<=12.4:
+                return txt_res3
+            elif 2<=self.index<=7.4:
+                return txt_res4
+            elif self.index<=1.9:
+                return txt_res5
+        elif 12>=self.exp.age >= 11:
+            if self.index >= 18:
+                return txt_res1
+            elif 14<=self.index<=17.9:
+                return txt_res2
+            elif 9<=self.index<=13.9:
+                return txt_res3
+            elif 3.5<=self.index<=8.9:
+                return txt_res4
+            elif self.index<=3.4:
+                return txt_res5
+        elif 10>=self.exp.age >= 9:
+            if self.index >= 19.5:
+                return txt_res1
+            elif 15.5<=self.index<=19.4:
+                return txt_res2
+            elif 10.5<=self.index<=15.4:
+                return txt_res3
+            elif 5<=self.index<=10.4:
+                return txt_res4
+            elif self.index<=4.9:
+                return txt_res5
+        elif 8>=self.exp.age >= 7:
+            if self.index >= 21:
+                return txt_res1
+            elif 17<=self.index<=20.9:
+                return txt_res2
+            elif 12<=self.index<=16.9:
+                return txt_res3
+            elif 6.5<=self.index<=11.9:
+                return txt_res4
+            elif self.index<=6.4:
+                return txt_res5
 
     def timer_test1(self):
         global time
@@ -100,6 +166,7 @@ class TestWin(QWidget):
         self.txt_timer.setStyleSheet('color: rgb(0:0:0)')
         if time.toString('hh:mm:ss') == '00:00:00':
             self.timer.stop()
+
     def timer_test2(self):
         global time
         self.timer = QTimer()
