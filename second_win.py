@@ -60,7 +60,7 @@ class TestWin(QWidget):
 
         self.txt_timer = QLabel(txt_timer)
         self.txt_timer.setFont(QFont("Times", 36, QFont.Bold))
-        self.txt_timer.setStyleSheet('color: rgb(255:0:0)')
+        self.txt_timer.setStyleSheet('color: rgb(0,0,0)')
 
         self.layout_line1 = QVBoxLayout()
         self.layout_line2 = QVBoxLayout()
@@ -177,7 +177,7 @@ class TestWin(QWidget):
         global time
         time = time.addSecs(-1)
         self.txt_timer.setText(time.toString('hh:mm:ss')[6:8])
-        self.txt_timer.setStyleSheet('color: rgb(0:0:0)')
+        self.txt_timer.setStyleSheet('color: rgb(0,0,0)')
         if time.toString('hh:mm:ss') == '00:00:00':
             self.timer.stop()
 
@@ -192,10 +192,10 @@ class TestWin(QWidget):
         time = time.addSecs(-1)
         self.txt_timer.setText(time.toString('hh:mm:ss'))
         if int(time.toString('hh:mm:ss')[6:8])>=45:
-            self.txt_timer.setStyleSheet('color: rgb(0:255:0)')
+            self.txt_timer.setStyleSheet('color: rgb(0,255,0)')
         elif int(time.toString('hh:mm:ss')[6:8])<=15:
-            self.txt_timer.setStyleSheet('color: rgb(0:255:0)')
+            self.txt_timer.setStyleSheet('color: rgb(0,255,0)')
         else:
-            self.txt_timer.setStyleSheet('color: rgb(0:0:0)')
+            self.txt_timer.setStyleSheet('color: rgb(0,0,0)')
         if time.toString('hh:mm:ss') == '00:00:00':
             self.timer.stop()
